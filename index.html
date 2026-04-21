@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Education Albania</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..1000&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --gold: #c8a96e;
+    --gold-light: #e8cfaa;
+    --black: #080808;
+    --white: #f4f0eb;
+    --gray: #1a1a1a;
+    --border: rgba(200,169,110,0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+body {
+    background: var(--black);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.logo span { color: var(--gold); }
+
+nav ul {
+    display: flex;
+    gap: 3vw;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(244,240,235,0.6);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+}
+
+nav ul li a:hover { color: var(--gold); }
+nav ul li a:hover::after { width: 100%; }
+
+/* ─── HOME ─── */
+#home {
+    width: 100%;
+    height: 100vh;
+    background-image:
+        linear-gradient(to right, rgba(8,8,8,0.95) 40%, rgba(8,8,8,0.5) 100%),
+        url("bg.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10vw;
+    position: relative;
+    overflow: hidden;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+}
+
+.home-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+}
+
+.mes h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    max-width: 700px;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.4s;
+}
+
+.mes h1 em {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.home-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.6s;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--gold-light);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    border: 1px solid var(--border);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 10vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.8s;
+}
+
+.scroll-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    animation: expandLine 2s ease infinite;
+}
+
+.scroll-indicator p {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: rgba(244,240,235,0.4);
+    text-transform: uppercase;
+}
+
+@keyframes expandLine {
+    0%, 100% { width: 30px; opacity: 0.4; }
+    50% { width: 60px; opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── INFO ─── */
+#info {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-left {
+    padding: 10vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+}
+
+.section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-label::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.info-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.info-left h2 em {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.info-left p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(244,240,235,0.65);
+    margin-bottom: 1.5rem;
+}
+
+.info-right {
+    padding: 10vh 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.stat-item {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.4s ease;
+}
+
+.stat-item:hover { border-color: var(--gold); }
+.stat-item:hover::before { height: 100%; }
+
+.stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: rgba(244,240,235,0.5);
+    text-transform: uppercase;
+}
+
+.stat-desc {
+    font-size: 0.95rem;
+    color: rgba(244,240,235,0.5);
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+/* ─── KURSET ─── */
+#kurset {
+    width: 100%;
+    min-height: 100vh;
+    background: #0d0d0d;
+    padding: 10vh 0;
+    position: relative;
+    border-top: 1px solid var(--border);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 6vh;
+    padding: 0 10vw;
+}
+
+.section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-top: 1rem;
+}
+
+.section-header h2 em { color: var(--gold); font-style: italic; }
+
+.karusel {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    padding: 2vh 0;
+}
+
+.karusel::before,
+.karusel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.karusel::before {
+    left: 0;
+    background: linear-gradient(to right, #0d0d0d, transparent);
+}
+
+.karusel::after {
+    right: 0;
+    background: linear-gradient(to left, #0d0d0d, transparent);
+}
+
+.grupet {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: stripScroll 18s linear infinite;
+    padding-right: 2rem;
+    align-items: center;
+}
+
+.grupet:hover { animation-play-state: paused; }
+
+@keyframes spini {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.krs {
+    flex: 0 0 180px;
+    height: 260px;
+    background: var(--gray);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.krs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.krs:hover::before { transform: scaleX(1); }
+
+.krs:hover {
+    flex: 0 0 320px;
+    height: 320px;
+    border-color: var(--gold);
+    background: #151515;
+}
+
+.krs-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.krs:hover .krs-icon { opacity: 1; }
+
+.krs h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+
+.krs h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+}
+
+.krs-desc {
+    font-size: 0.9rem;
+    color: rgba(244,240,235,0.5);
+    line-height: 1.5;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    font-weight: 300;
+}
+
+.krs:hover .krs-desc { max-height: 100px; }
+
+/* ─── TJETER (Why Us) ─── */
+#tjeter {
+    width: 100%;
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+}
+
+/* ── Testimonials ── */
+.testimonials-section {
+    padding: 10vh 10vw;
+    position: relative;
+}
+
+.testimonials-section::before {
+    content: '"';
+    position: absolute;
+    top: 5vh;
+    right: 8vw;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20rem;
+    line-height: 1;
+    color: rgba(200,169,110,0.06);
+    pointer-events: none;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 5vh;
+}
+
+.testimonial-card {
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.testimonial-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+}
+
+.testimonial-card:nth-child(2) {
+    margin-top: 3rem;
+}
+
+.testimonial-stars {
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(244,240,235,0.8);
+    margin-bottom: 2rem;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.author-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.author-role {
+    font-size: 0.85rem;
+    color: rgba(244,240,235,0.4);
+    font-weight: 300;
+}
+
+/* ── Why Choose Us ── */
+.why-section {
+    padding: 0 10vw 10vh;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    border: 1px solid var(--border);
+    margin-top: 5vh;
+}
+
+.why-item {
+    padding: 3rem;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    transition: background 0.3s;
+}
+
+.why-item:hover { background: rgba(200,169,110,0.04); }
+
+.why-icon {
+    font-size: 1.8rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+}
+
+.why-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+}
+
+.why-content p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(244,240,235,0.55);
+}
+
+/* ── Languages Strip ── */
+.lang-strip {
+    padding: 6vh 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: #0a0a0a;
+    overflow: hidden;
+}
+
+.lang-track {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: stripScroll 18s linear infinite;
+}
+
+@keyframes stripScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.lang-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    white-space: nowrap;
+}
+
+.lang-flag {
+    font-size: 1.8rem;
+}
+
+.lang-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: rgba(244,240,235,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.lang-sep {
+    color: var(--gold);
+    font-size: 0.5rem;
+    margin-left: 4rem;
+}
+
+/* ── CTA Banner ── */
+.cta-banner {
+    padding: 10vh 10vw;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+    border-top: 1px solid var(--border);
+}
+
+.cta-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--white);
+}
+
+.cta-banner h2 em { color: var(--gold); font-style: italic; }
+
+/* ─── FOOTER ─── */
+footer { background: var(--black); }
+
+#kontakti {
+    border-top: 1px solid var(--border);
+    padding: 5vh 8vw;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-left h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: rgba(244,240,235,0.6);
+    font-size: 0.9rem;
+    font-weight: 300;
+    transition: color 0.3s;
+}
+
+.contact-item:hover { color: var(--gold); }
+
+.contact-item ion-icon {
+    font-size: 1rem;
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+.social-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(244,240,235,0.5);
+    text-decoration: none;
+    transition: border-color 0.3s, color 0.3s;
+    font-size: 1.1rem;
+}
+
+.social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.contact-right {
+    padding-top: 0.5rem;
+}
+
+.contact-right h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    list-style: none;
+}
+
+.footer-links li a {
+    text-decoration: none;
+    color: rgba(244,240,235,0.5);
+    font-size: 0.9rem;
+    font-weight: 300;
+    transition: color 0.3s;
+}
+
+.footer-links li a:hover { color: var(--gold); }
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding: 1.8rem 8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(244,240,235,0.25);
+    text-transform: uppercase;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+    nav ul { display: none; }
+
+    #info { grid-template-columns: 1fr; }
+    .info-left { border-right: none; border-bottom: 1px solid var(--border); }
+
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonial-card:nth-child(2) { margin-top: 0; }
+
+    .why-grid { grid-template-columns: 1fr; }
+
+    .cta-banner { grid-template-columns: 1fr; gap: 2rem; }
+
+    #kontakti { grid-template-columns: 1fr; gap: 2rem; }
+
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+    <a href="#" class="logo">Global <span>Education</span> Albania</a>
+    <ul>
+        <li><a href="#info">Informacione</a></li>
+        <li><a href="#kurset">Kurset</a></li>
+        <li><a href="#tjeter">Pse Ne</a></li>
+        <li><a href="#kontakti">Kontakti</a></li>
+    </ul>
+</nav>
+
+<!-- ─── HOME ─── -->
+<section id="home">
+    <div class="home-tag">Qenra e kurseve — Durrës, Shqipëri</div>
+    <div class="mes">
+        <h1>Gati të mësosh<br>një gjuhë të re dhe të<br>hapësh <em>një kapitull</em><br>të ri në jetën tënde?</h1>
+    </div>
+    <div class="home-cta">
+        <a href="#kurset" class="btn-primary">Shiko Kurset</a>
+        <a href="#kontakti" class="btn-secondary">Na Kontakto</a>
+    </div>
+    <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <p>Zbulo më shumë</p>
+    </div>
+</section>
+
+<!-- ─── INFO ─── -->
+<section id="info">
+    <div class="info-left">
+        <div class="section-label">Rreth Nesh</div>
+        <h2>Mësimdhënie e<br><em>nivelit të lartë</em><br>prej vitesh</h2>
+        <p>Global Education Albania është një qendër kursesh me bazë në Durrës, e dedikuar ndaj ekselencës akademike dhe zhvillimit personal të çdo studenti.</p>
+        <p>Metodat tona bashkëkohore, mësuesit me eksperiencë ndërkombëtare dhe ambienti i ngrohtë e bashkëpunues e bëjnë mësimin jo vetëm efektiv, por edhe të gëzueshëm.</p>
+        <a href="#kurset" class="btn-primary" style="margin-top:1rem; display:inline-block;">Eksploroni Kurset</a>
+    </div>
+    <div class="info-right">
+        <div class="stat-item">
+            <div class="stat-number">X+(nr)</div>
+            <div class="stat-label">Studentë të Diplomuar</div>
+            <div class="stat-desc">Të gjithë të suksesshëm në karrierat e tyre ndërkombëtare.</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">X(nr)</div>
+            <div class="stat-label">Gjuhë të Ofruara</div>
+            <div class="stat-desc">Anglisht, Italisht, Gjermanisht, e shumë të tjera.</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Shkallë Suksesi</div>
+            <div class="stat-desc">Studentët tanë kalojnë certifikatat ndërkombëtare me rezultate të larta.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── KURSET ─── -->
+<section id="kurset">
+    <div class="section-header">
+        <div class="section-label" style="justify-content:center;">Programet Tona</div>
+        <h2>Zgjidhni <em>rrugën tuaj</em> drejt fluencës</h2>
+    </div>
+    <div class="karusel">
+        <div class="grupet">
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 1</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 2</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 3</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 4</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 5</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 6</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 7</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+            <div class="krs">
+                <div class="krs-icon">...</div>
+                <h2>Nivelet qe ofrohen</h2>
+                <h1>kursi 8</h1>
+                <p class="krs-desc">pershkrim i shkurter...</p>
+            </div>
+        <!-- Duplicate for infinite loop -->
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 1</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 2</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 3</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 4</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 5</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 6</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 7</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        <div class="krs">
+            <div class="krs-icon">...</div>
+            <h2>Nivelet qe ofrohen</h2>
+            <h1>kursi 8</h1>
+            <p class="krs-desc">pershkrim i shkurter...</p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Us + Testimonials blah blah blah -->
+<!-- u trrashem duke shkr budalleqe ahhhhhhhh ndihme!!!!!! -->
+<section id="tjeter">
+
+    <!-- Pse te na zgjidhni ne ????????  -->
+    <div class="why-section">
+        <div class="section-label" style="margin-top:8vh;">Pse Global Education Albania</div>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-icon"><ion-icon name="school-outline"></ion-icon></div>
+                <div class="why-content">
+                    <h3>Mësues me Eksperiencë</h3>
+                    <p>Të gjithë pedagogët tanë janë të certifikuar ndërkombëtarisht dhe kanë eksperiencë mësimdhënieje në vendet ku flitet gjuha.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><ion-icon name="ribbon-outline"></ion-icon></div>
+                <div class="why-content">
+                    <h3>Çertifikata të Njohura</h3>
+                    <p>Kurset tona përgatiten drejtpërdrejt për çertifikatat zyrtare si Cambridge, IELTS, ... dhe shumë të tjera.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><ion-icon name="people-outline"></ion-icon></div>
+                <div class="why-content">
+                    <h3>Grupe të Vogla</h3>
+                    <p>Çdo grup ka maksimumi 10 studentë, duke siguruar vëmendje individuale dhe progres të shpejtë për secilin.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><ion-icon name="time-outline"></ion-icon></div>
+                <div class="why-content">
+                    <h3>Orare Fleksibël</h3>
+                    <p>Kurse mëngjesore, pasdite dhe të fundjavës — zgjidhni oraret që i përshtaten stilit tuaj të jetesës.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials (ky vendi ku rrejme njerzit e tjere me review facke)(nuk e i pse e vura...me dkt ma sygjeroi chatGPT anyways) -->
+    <div class="testimonials-section">
+        <div class="section-label">Çfarë Thonë Studentët</div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"komenti i ktij tipit...blah blah blah (nje review shume bkr per ti rrejt njrz bkr)..."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">A</div>
+                    <div>
+                        <div class="author-name">Filan Fisteku</div>
+                        <div class="author-role">Studente e nje kursi — punon në (rreni)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"njesoj si ajo e para :)..."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">E</div>
+                    <div>
+                        <div class="author-name">Rruzhdi Bizhuda</div>
+                        <div class="author-role">Studenti i nje krs(shkurt per kursi  po po pertoja ta shkr)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"e dini tashme ca duhet ketu..."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div>
+                        <div class="author-name">Bexheti (;</div>
+                        <div class="author-role">Studente e nje krs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner">
+        <h2>Gati të filloni<br><em>udhëtimin tuaj gjuhësor?</em></h2>
+        <a href="#kontakti" class="btn-primary">Regjistrohu Sot</a>
+    </div>
+
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <section id="kontakti">
+        <div class="contact-left">
+            <h3>Na gjeni këtu</h3>
+            <div class="contact-details">
+                <a href="https://www.google.com/maps/place/GLOBAL+EDUCATION+ALBANIA" target="_blank" rel="noopener" class="contact-item">
+                    <ion-icon name="location-outline"></ion-icon>
+                    Rruga "H. Kërtusha", Pranë shkollës "Leonik Tomeo", Durrës, Shqipëri
+                </a>
+                <a href="tel:+355676810530" class="contact-item">
+                    <ion-icon name="call-outline"></ion-icon>
+                    +355 67 681 0530
+                </a>
+                <a href="mailto:globaleducationalbania@gmail.com" class="contact-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    globaleducationalbania@gmail.com
+                </a>
+            </div>
+            <div class="social-row">
+                <a href="https://www.instagram.com/globaleducationalbania/" target="_blank" rel="noopener" class="social-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="https://www.facebook.com/share/1EdQSeud33/" target="_blank" rel="noopener" class="social-link">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a href="#" class="social-link">
+                    <ion-icon name="globe-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
+        <div class="contact-right">
+            <h4>Lidhje</h4>
+            <ul class="footer-links">
+                <li><a href="#info">Rreth Nesh</a></li>
+                <li><a href="#kurset">Kurset</a></li>
+                <li><a href="#tjeter">Pse Ne</a></li>
+                <li><a href="policies/p.html#privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                <li><a href="policies/p.html#terms" target="_blank" rel="noopener">Terms of Use</a></li>
+                <li><a href="policies/p.html#cookies" target="_blank" rel="noopener">Cookie Policy</a></li>
+            </ul>
+        </div>
+    </section>
+    <div class="footer-bottom">
+        <p>© 2026 Global Education Albania. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
